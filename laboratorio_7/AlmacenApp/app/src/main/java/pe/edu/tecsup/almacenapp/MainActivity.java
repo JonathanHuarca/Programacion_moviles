@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorAccent);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

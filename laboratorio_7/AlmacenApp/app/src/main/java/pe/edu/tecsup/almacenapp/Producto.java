@@ -9,6 +9,7 @@ public class Producto {
     private String detalles;
     private String estado;
 
+
     public Integer getId() {
         return id;
     }
