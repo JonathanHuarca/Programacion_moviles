@@ -10,14 +10,19 @@ public class User {
     private String fullname;
     private String email;
     private String password;
+    private byte[] image;
+
+
 
     public User() {
     }
 
-    public User(String fullname, String email, String password) {
+    public User(String fullname, String email, String password , byte[] image) {
         this.email = email;
         this.password = password;
         this.fullname = fullname;
+        this.image = image;
+
     }
 
     public Long getId() {
@@ -52,6 +57,11 @@ public class User {
         this.password = password;
     }
 
+    public byte[] getImage() { return image; }
+
+    public void setImage(byte[] image) { this.image = image; }
+
+
     //Retorna un valor String:
     //Lo que hace este es concatenar
     @Override
@@ -61,6 +71,7 @@ public class User {
                 ", fullname='" + fullname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", imagen='" + image + '\'' +
                 '}';
     }
 }

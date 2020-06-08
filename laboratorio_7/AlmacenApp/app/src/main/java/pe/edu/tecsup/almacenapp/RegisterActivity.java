@@ -145,6 +145,10 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             // Si se incluye hacemos envió en multiparts
 
+
+            RequestBody nombrePart = RequestBody.create(MultipartBody.FORM, nombre);
+            RequestBody precioPart = RequestBody.create(MultipartBody.FORM, precio);
+            RequestBody detallesPart = RequestBody.create(MultipartBody.FORM, detalles);
             File file = new File(mediaFileUri.getPath());
             Log.d(TAG, "File: " + file.getPath() + " - exists: " + file.exists());
 
@@ -162,10 +166,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpeg"), byteArray);
             MultipartBody.Part imagenPart = MultipartBody.Part.createFormData("imagen", file.getName(), requestFile);
-
-            RequestBody nombrePart = RequestBody.create(MultipartBody.FORM, nombre);
-            RequestBody precioPart = RequestBody.create(MultipartBody.FORM, precio);
-            RequestBody detallesPart = RequestBody.create(MultipartBody.FORM, detalles);
 
             call = service.createProductoWithImage(nombrePart, precioPart, detallesPart, imagenPart);
         }

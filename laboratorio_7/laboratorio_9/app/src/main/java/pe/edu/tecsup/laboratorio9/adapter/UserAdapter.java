@@ -1,5 +1,7 @@
 package pe.edu.tecsup.laboratorio9.adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,15 +32,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     //Representacion de nuestra plantilla
     //Viena hacer cada elemento que vamos a pintar en la consola
     //En este caso una imagen fullname y email
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView picture;
         public TextView fullname;
         public TextView email;
+
         public ImageButton button;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+
             picture = (ImageView) itemView.findViewById(R.id.picture_image);
             fullname = (TextView) itemView.findViewById(R.id.fullname_text);
             email = (TextView) itemView.findViewById(R.id.email_text);
@@ -53,13 +59,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     //Recuperamos un objeto de tipo usuario de una lista
-    //
 
     @Override
     public void onBindViewHolder(UserAdapter.ViewHolder viewHolder,final int position) {
         final User user = this.users.get(position);
+
+        byte[] foodImage = user.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
+        viewHolder.picture.setImageBitmap(bitmap);
         viewHolder.fullname.setText(user.getFullname());
         viewHolder.email.setText(user.getEmail());
+
 
         viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +82,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
             }
         });
-
 
     }
 

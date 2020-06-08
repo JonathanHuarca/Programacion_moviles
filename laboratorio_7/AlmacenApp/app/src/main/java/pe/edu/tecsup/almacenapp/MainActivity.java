@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                         adapter.setProductos(productos);
                         adapter.notifyDataSetChanged();
 
+
                     } else {
                         Log.e(TAG, "onError: " + response.errorBody().string());
                         throw new Exception("Error en el servicio");

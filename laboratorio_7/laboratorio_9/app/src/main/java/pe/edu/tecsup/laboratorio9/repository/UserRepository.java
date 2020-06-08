@@ -18,16 +18,18 @@ public class UserRepository {
         return user;
     }
 
-    public static void create(String fullname, String email, String password){
-        User user = new User(fullname, email, password);
+    public static void create(String fullname, String email, String password, byte[] image){
+
+        User user = new User(fullname, email, password, image);
         SugarRecord.save(user);
     }
 
-    public static void update(String fullname, String email, String password, Long id){
+    public static void update(String fullname, String email, String password ,byte[] image, Long id){
         User user = SugarRecord.findById(User.class, id);
         user.setFullname(fullname);
         user.setEmail(email);
         user.setPassword(password);
+        user.setImage(image);
         SugarRecord.save(user);
     }
 

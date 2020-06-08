@@ -5,9 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import pe.edu.tecsup.laboratorio9.R;
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     //Tag para los log
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    ImageView imageView;
     private static final int REGISTER_FORM_REQUEST = 100;
 
     //
@@ -64,6 +69,16 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
     }
+
+    public static byte[] imageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+
 
 }
 
